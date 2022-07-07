@@ -24,7 +24,7 @@ Route::apiResource('/v1/comment', CommentController::class)->only([
 
 
 Route::apiResource('/v1/like', LikeController::class)->only([
-        'index', 'store', 'destroy'
+        'index','store', 'destroy'
 ]);
 
 

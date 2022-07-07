@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Like;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class LikeController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Comment::userComments($request->id);
+        $items = Like::users($request->id);
         return response()->json([
             'data' => $items
         ], 200);
@@ -17,15 +17,15 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        $item = Comment::create($request->all());
+        $item = Like::create($request->all());
         return response()->json([
             'data' => $item
         ], 201);
     }
 
-    public function destroy(Comment $comment)
+    public function destroy(Like $like)
     {
-        $item = Comment::where('id', $comment->id)->delete();
+        $item = Like::where('id', $like->id)->delete();
         if ($item) {
             return response()->json([
                 'message' => 'Deleted successfully',

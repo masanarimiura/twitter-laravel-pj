@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Like extends Model
+class ike extends Model
 {
     use HasFactory;
 
-    public function tweets() {
+    public function Tweets() {
         return $this->hasMany('App\Models\Tweet');
     }
 
@@ -19,9 +19,6 @@ class Like extends Model
 
     public static function userLikes($id)
     {   
-        return Like::where('tweet_id', $id)->get();
+        return Likes::where('tweet_id', $id)->get();
     }
-    
-    // protected $fillable = ['user_id'];
-
 }

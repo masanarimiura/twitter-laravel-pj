@@ -23,8 +23,8 @@ class Comment extends Model
         return $this->belongsTo('App\Models\Tweet');
     }
 
-    public static function userComments($id)
+        public static function userTweets($id)
     {   
-        return Comment::where('tweet_id', $id)->get();
+        return Tweet::where('user_id', $id)->get();
     }
 }

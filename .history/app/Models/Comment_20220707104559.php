@@ -18,13 +18,10 @@ class Comment extends Model
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
-
+    
     public function tweet() {
         return $this->belongsTo('App\Models\Tweet');
     }
 
-    public static function userComments($id)
-    {   
-        return Comment::where('tweet_id', $id)->get();
-    }
+
 }

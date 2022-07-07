@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Tweet extends Model
 {
@@ -27,6 +28,7 @@ class Tweet extends Model
         return $this->belongsTo('App\Models\Like');
     }
 
+    // nuxtからidもらって比較するつもりで書いている
     public static function userTweets($id)
     {   
         return Tweet::where('user_id', $id)->get();

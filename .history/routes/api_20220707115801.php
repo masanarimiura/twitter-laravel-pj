@@ -17,14 +17,13 @@ Route::apiResource('/v1/tweet', TweetController::class)->only([
         'index', 'store', 'destroy'
 ]);
 
-// 動作確認済み
+
 Route::apiResource('/v1/comment', CommentController::class)->only([
         'index', 'store', 'destroy'
 ]);
 
-
 Route::apiResource('/v1/like', LikeController::class)->only([
-        'index', 'store', 'destroy'
+        'store', 'show', 'destroy'
 ]);
 
 

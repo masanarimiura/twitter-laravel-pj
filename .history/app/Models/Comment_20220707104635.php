@@ -25,6 +25,6 @@ class Comment extends Model
 
     public static function userComments($id)
     {   
-        return Comment::where('tweet_id', $id)->get();
+        return Comment::where('user_id', $id)->get();
     }
 }

@@ -21,7 +21,4 @@ class Like extends Model
     {   
         return Like::where('tweet_id', $id)->get();
     }
-    
-    // protected $fillable = ['user_id'];
-
 }

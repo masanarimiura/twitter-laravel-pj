@@ -5,25 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class like extends Model
 {
     use HasFactory;
 
-    protected $guarded = array('id');
-
-    public static $rules = array(
-        'content' => 'required',
-    );
+    public function Tweets() {
+        return $this->hasMany('App\Models\Tweet');
+    }
 
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function tweet() {
-        return $this->belongsTo('App\Models\Tweet');
-    }
-
-    public static function userComments($id)
+    public static function userLikes($id)
     {   
         return Comment::where('tweet_id', $id)->get();
     }

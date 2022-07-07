@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
-class Comment extends Model
+class Tweet extends Model
 {
     use HasFactory;
 
@@ -15,16 +16,20 @@ class Comment extends Model
         'content' => 'required',
     );
 
+    public function comments() {
+        return $this->hasMany('App\Models\Comment');
+    }
+
     public function user() {
         return $this->belongsTo('App\Models\User');
     }
 
-    public function tweet() {
-        return $this->belongsTo('App\Models\Tweet');
+    public function like() {
+        return $this->belongsTo('App\Models\Like');
     }
 
-    public static function userComments($id)
+    public static function userTweets($id)
     {   
-        return Comment::where('tweet_id', $id)->get();
+        return Tweet::where('user_id', $id)->get();
     }
 }

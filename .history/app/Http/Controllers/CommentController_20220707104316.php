@@ -7,14 +7,6 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function index(Request $request)
-    {
-        $items = Comment::userComments($request->id);
-        return response()->json([
-            'data' => $items
-        ], 200);
-    }
-
     public function store(Request $request)
     {
         $item = Comment::create($request->all());

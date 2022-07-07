@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class TweetController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Comment::userComments($request->id);
+        $items = Tweet::userTweets(102
+    );
         return response()->json([
             'data' => $items
         ], 200);
@@ -17,15 +18,15 @@ class CommentController extends Controller
 
     public function store(Request $request)
     {
-        $item = Comment::create($request->all());
+        $item = Tweet::create($request->all());
         return response()->json([
             'data' => $item
         ], 201);
     }
 
-    public function destroy(Comment $comment)
+    public function destroy(Tweet $tweet)
     {
-        $item = Comment::where('id', $comment->id)->delete();
+        $item = Tweet::where('id', $tweet->id)->delete();
         if ($item) {
             return response()->json([
                 'message' => 'Deleted successfully',

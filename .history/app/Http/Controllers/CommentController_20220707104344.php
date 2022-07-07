@@ -9,7 +9,7 @@ class CommentController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Comment::userComments($request->id);
+        $items = Tweet::userTweets($request->id);
         return response()->json([
             'data' => $items
         ], 200);
