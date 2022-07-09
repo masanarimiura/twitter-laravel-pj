@@ -13,12 +13,12 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     
 
-    protected $guarded = array('id');
+    protected $fillable = array('id');
 
     public static $rules = array(
-        'name' => 'required|max:20',
-        'email' => 'required|unique:posts|email',
-        'password' => 'required|min:6'
+        'name' => 'required',
+        'email' => 'required',
+        'password' => 'required'
     );
 
     public function tweets() {
@@ -28,7 +28,7 @@ class User extends Authenticatable
     public function comments() {
         return $this->hasMany('App\Models\Comment');
     }
-    
+
     public function likes() {
         return $this->hasMany('App\Models\Like');
     }

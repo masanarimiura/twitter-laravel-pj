@@ -12,7 +12,7 @@ class Comment extends Model
     protected $guarded = array('id');
 
     public static $rules = array(
-        'content' => 'required|max:120',
+        'content' => 'required|max:20',
     );
 
     public function user() {

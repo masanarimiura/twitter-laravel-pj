@@ -9,7 +9,7 @@ class Like extends Model
 {
     use HasFactory;
 
-    protected $guarded = array('id');
+    
 
     public function tweets() {
         return $this->hasMany('App\Models\Tweet');
@@ -23,4 +23,7 @@ class Like extends Model
     {   
         return Like::where('tweet_id', $id)->get();
     }
+    
+    protected $guarded = ['id'];
+
 }

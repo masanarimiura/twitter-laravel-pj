@@ -15,9 +15,9 @@ class CommentController extends Controller
         ], 201);
     }
 
-    public function show(Comment $comment)
+    public function show(Comment $request)
     {
-        $item = Comment::find($comment);
+        $item = Comment::where('id', $request);
         if ($item) {
             return response()->json([
                 'data' => $item
@@ -31,7 +31,7 @@ class CommentController extends Controller
     
     public function destroy(Comment $comment)
     {
-        $item = Comment::where('id', $comment->id)->delete();
+        $item = Comment::find($comment->id)->delete();
         if ($item) {
             return response()->json([
                 'message' => 'Deleted successfully',

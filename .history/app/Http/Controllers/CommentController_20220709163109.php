@@ -15,9 +15,9 @@ class CommentController extends Controller
         ], 201);
     }
 
-    public function show(Comment $comment)
+    public function show(Request $request)
     {
-        $item = Comment::find($comment);
+        $item = Rest::find($rest);
         if ($item) {
             return response()->json([
                 'data' => $item

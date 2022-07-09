@@ -16,8 +16,8 @@ class User extends Authenticatable
     protected $guarded = array('id');
 
     public static $rules = array(
-        'name' => 'required|max:20',
-        'email' => 'required|unique:posts|email',
+        'name' => 'required｜max:20',
+        'email' => 'required|email',
         'password' => 'required|min:6'
     );
 

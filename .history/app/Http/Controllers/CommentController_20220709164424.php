@@ -17,7 +17,7 @@ class CommentController extends Controller
 
     public function show(Comment $comment)
     {
-        $item = Comment::find($comment);
+        $item = Comment::find('id', $request->id);
         if ($item) {
             return response()->json([
                 'data' => $item

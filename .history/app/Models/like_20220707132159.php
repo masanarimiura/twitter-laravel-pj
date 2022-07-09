@@ -23,4 +23,7 @@ class Like extends Model
     {   
         return Like::where('tweet_id', $id)->get();
     }
+    
+    protected $guarded = ['id'];
+
 }

@@ -17,7 +17,7 @@ Route::apiResource('/v1/tweet', TweetController::class)->only([
 ]);
 
 Route::apiResource('/v1/comment', CommentController::class)->only([
-        'store', 'show', 'destroy'
+        'store', 'show' 'destroy'
 ]);
 
 Route::apiResource('/v1/like', LikeController::class)->only([

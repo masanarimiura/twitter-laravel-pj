@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    
     public function store(Request $request)
     {
         $item = Comment::create($request->all());
@@ -14,19 +15,12 @@ class CommentController extends Controller
             'data' => $item
         ], 201);
     }
-
-    public function show(Comment $comment)
+    public function index(Request $request)
     {
-        $item = Comment::find($comment);
-        if ($item) {
-            return response()->json([
-                'data' => $item
-            ], 200);
-        } else {
-            return response()->json([
-                'message' => 'Not found',
-            ], 404);
-        }
+        $items = Comment::userComments($request->id);
+        return response()->json([
+            'data' => $items
+        ], 200);
     }
     
     public function destroy(Comment $comment)
