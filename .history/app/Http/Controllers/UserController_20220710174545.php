@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function show(Request $request)
     {
-        $item = User::where('uid',$request->uid);
+        $item = User::where('uid',$re);
         if ($item) {
             return response()->json([
                 'data' => $item
