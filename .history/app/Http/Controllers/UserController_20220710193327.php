@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function show(Request $request)
     {
-        $item = User::where('uid',"=",$request->uid)->first();
+        $item = User::where('uid',$request->uid);
         if ($item) {
             return response()->json([
                 'data' => $item
@@ -25,7 +25,7 @@ class UserController extends Controller
         } else {
             return response()->json([
                 'message' => 'Not found',
-            ], 404);
+            ], );
         }
     }
 }
