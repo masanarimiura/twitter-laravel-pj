@@ -9,7 +9,7 @@ use App\Http\Controllers\LikeController;
 
 
 Route::apiResource('/v1/user', UserController::class)->only([
-        'store'
+        'store',
 ]);
 
 Route::apiResource('/v1/tweet', TweetController::class)->only([
@@ -24,7 +24,6 @@ Route::apiResource('/v1/like', LikeController::class)->only([
         'index', 'store', 'destroy'
 ]);
 
-Route::get('/v1/user', [UserController::class, 'show']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
