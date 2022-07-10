@@ -19,7 +19,7 @@ class User extends Authenticatable
         'name' => 'required|max:20',
         'email' => 'required|unique:posts|email',
         'password' => 'required|min:6',
-        'uid' => 'required',
+        
     );
 
     public function tweets() {
