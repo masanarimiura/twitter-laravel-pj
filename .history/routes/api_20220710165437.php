@@ -9,7 +9,7 @@ use App\Http\Controllers\LikeController;
 
 
 Route::apiResource('/v1/user', UserController::class)->only([
-        'store', 'show'
+        'store', 
 ]);
 
 Route::apiResource('/v1/tweet', TweetController::class)->only([

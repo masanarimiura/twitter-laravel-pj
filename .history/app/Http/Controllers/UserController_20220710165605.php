@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $item = User::find($user);
+        $item = User::find($user;
         if ($item) {
             return response()->json([
                 'data' => $item
