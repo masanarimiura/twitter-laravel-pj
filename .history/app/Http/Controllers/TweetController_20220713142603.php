@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class TweetController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Tweet::all();
+        $items = Tweet::userTweets($request->id);
         return response()->json([
             'data' => $items
         ], 200);

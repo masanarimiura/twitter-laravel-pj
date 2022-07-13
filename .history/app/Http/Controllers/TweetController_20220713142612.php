@@ -9,7 +9,7 @@ class TweetController extends Controller
 {
     public function index()
     {
-        $items = Tweet::all();
+        $items = Tweet::userTweets($request->id);
         return response()->json([
             'data' => $items
         ], 200);
