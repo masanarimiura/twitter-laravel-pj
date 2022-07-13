@@ -11,7 +11,7 @@ class LikeController extends Controller
     {
         $items = Like::userLikes($request->tweet_id);
         return response()->json([
-            'count' => $items
+            'data' => $items
         ], 200);
     }
 

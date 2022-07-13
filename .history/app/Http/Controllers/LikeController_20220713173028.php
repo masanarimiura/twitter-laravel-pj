@@ -7,11 +7,35 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
+    public function like(User $user, tweet $tweet)
+    {
+    if (!$tweet) {
+        abort(404);
+    }
+    //いいねは１回しか押させない
+    $tweet->likes()->detach($user->id);
+    $tweet->likes()->attach($user->id);
+    return ['tweet_id' => $tweet->id];
+    }
+
+    public function unlike(User $user, Comment $comment)
+    {
+    if (!$comment) {
+        abort(404);
+    }
+
+    //いいねは１回しか押させない
+    $comment->likes()->detach($suer->id);
+    $comment->likes()->attach($user->id);
+
+    return ['comment_id' => $comment->id];
+    }
+
     public function index(Request $request)
     {
-        $items = Like::userLikes($request->tweet_id);
+        $items = Like::userLikes($request->id);
         return response()->json([
-            'count' => $items
+            'data' => $items
         ], 200);
     }
 

@@ -21,6 +21,6 @@ class Like extends Model
 
     public static function userLikes($id)
     {   
-        return Like::where('tweet_id', $id)->count();
+        return Like::where('tweet_id', $id)->get();
     }
 }

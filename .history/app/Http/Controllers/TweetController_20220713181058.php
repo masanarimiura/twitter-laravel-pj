@@ -40,18 +40,28 @@ class TweetController extends Controller
     public function like($likeData)
     {
     Like::create([
-        'tweet_id' => $likeData->tweet_id,
-        'user_id' => $likeData->user_id,
+        'tweet_id' => $likeData->id,
+        'user_id' => $likeData->,
     ]);
-    session()->flash('success', 'You Liked the Reply.');
-    return redirect()->back();
-    }
 
-    public function unlike($unLikeData)
-    {
-    $like = Like::where('tweet_id', $unLikeData->tweet_id)->where('user_id', $unLikeData->user_id,)->first();
-    $like->delete();
-    session()->flash('success', 'You Unliked the Reply.');
+    session()->flash('success', 'You Liked the Reply.');
+
     return redirect()->back();
-    }
+  }
+
+  /**
+   * 引数のIDに紐づくリプライにUNLIKEする
+   *
+   * @param $id リプライID
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function unlike($id)
+  {
+    $like = Like::where('reply_id', $id)->where('user_id', Auth::id())->first();
+    $like->delete();
+
+    session()->flash('success', 'You Unliked the Reply.');
+
+    return redirect()->back();
+  }
 }

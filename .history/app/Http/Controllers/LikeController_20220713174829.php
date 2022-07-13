@@ -7,11 +7,29 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
+    //コンポーネント初期読み込み時(created)に呼び出される
+    public function firstcheck($post) {
+        $user = Auth::user();
+        $likes = new Like();
+        $like = Like::where('posts_id',$post)->where('user_id',$user->id)->first();
+        if($like) {
+            $count = $likes->where('posts_id',$post)->where('like',1)->count();
+            return [$like->like,$count];
+        } else {
+            $like = $likes->create([
+                'user_id' => $user->id,
+               'posts_id' => $post,
+               'like' => 0
+          ]);
+          $count = $likes->where('posts_id',$post)->where('like',1)->count();
+          return [$like->like,$count];
+     }
+    }
     public function index(Request $request)
     {
-        $items = Like::userLikes($request->tweet_id);
+        $items = Like::userLikes($request->id);
         return response()->json([
-            'count' => $items
+            'data' => $items
         ], 200);
     }
 

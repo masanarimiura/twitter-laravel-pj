@@ -9,9 +9,9 @@ class LikeController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Like::userLikes($request->tweet_id);
+        $items = Like::userLikes($request->tweetid);
         return response()->json([
-            'count' => $items
+            'data' => $items
         ], 200);
     }
 

@@ -24,7 +24,7 @@ class Tweet extends Model
     }
 
     public function likes() {
-        return $this->hasMany('App\Models\Like');
+        return $this->hasMany('App\Models\Like','tweet_id');
     }
 
     // public static function userTweets($id)

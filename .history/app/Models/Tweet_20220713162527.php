@@ -23,12 +23,12 @@ class Tweet extends Model
         return $this->hasMany('App\Models\Comment');
     }
 
-    public function likes() {
-        return $this->hasMany('App\Models\Like');
+    public function like() {
+        return $this->belongsTo('App\Models\Like');
     }
 
-    // public static function userTweets($id)
-    // {   
-    //     return Tweet::where('user_id', $id)->get();
-    // }
+    public static function userTweets($id)
+    {   
+        return Tweet::where('user_id', $id)->get();
+    }
 }

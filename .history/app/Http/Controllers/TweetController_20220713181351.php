@@ -53,5 +53,5 @@ class TweetController extends Controller
     $like->delete();
     session()->flash('success', 'You Unliked the Reply.');
     return redirect()->back();
-    }
+  }
 }

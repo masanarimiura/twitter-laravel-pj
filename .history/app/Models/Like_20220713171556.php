@@ -19,8 +19,13 @@ class Like extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function getLikesCountAttribute()
+    {
+        return $this->likes->count();
+    }
+
     public static function userLikes($id)
     {   
-        return Like::where('tweet_id', $id)->count();
+        return Like::where('tweet_id', $id)->get();
     }
 }

@@ -49,9 +49,11 @@ class TweetController extends Controller
 
     public function unlike($unLikeData)
     {
-    $like = Like::where('tweet_id', $unLikeData->tweet_id)->where('user_id', $unLikeData->user_id,)->first();
+    $like = Like::where('tweet_id', $unlikeData->tweet_id)->where('user_id', $likeData->user_id,)->first();
     $like->delete();
+
     session()->flash('success', 'You Unliked the Reply.');
+
     return redirect()->back();
-    }
+  }
 }

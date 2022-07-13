@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Like;
+use App\Models\Tweet;
 use Illuminate\Http\Request;
 
-class LikeController extends Controller
+class TweetController extends Controller
 {
     public function index(Request $request)
     {
-        $items = Like::userLikes($request->tweet_id);
+        $items = Tweet::with('user:')->where('user_id', $id)->first();
         return response()->json([
-            'count' => $items
+            'data' => $items
         ], 200);
     }
 
     public function store(Request $request)
     {
-        $item = Like::create($request->all());
+        $item = Tweet::create($request->all());
         return response()->json([
             'data' => $item
         ], 201);
     }
 
-    public function destroy(Like $like)
+    public function destroy(Tweet $tweet)
     {
-        $item = Like::where('id', $like->id)->delete();
+        $item = Tweet::where('id', $tweet->id)->delete();
         if ($item) {
             return response()->json([
                 'message' => 'Deleted successfully',
