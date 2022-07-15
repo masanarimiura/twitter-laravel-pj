@@ -33,7 +33,7 @@ Route::get('/v1/user', [UserController::class, 'show']);
 Route::get('/v1/tweet/target', [TweetController::class, 'show']);
 // 対象tweetの表示 show
 Route::get('/v1/comment', [CommentController::class, 'show']);
-// 対象のtweetに対するcommentの表示する
+// 対象のtweetに対するcommentの表示
 
 
 
